@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', cadastrarProduto),
     path('cadastrar/', cadastrarProduto),
-    path('listar', listarProdutos),
-    path('deletar', deletarProdutos)
+    path('listar/', listarProdutos),
+    path('deletar/', deletarProdutos),
+    path('select_prod/', listaAtualizarProdutos),
+    path('select_prod/atualizar/', atualizarProdutos)
 ]
