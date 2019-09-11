@@ -1,87 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'produto/base.html' %}
+{% block content %}
+    <form class="form-group" action="" id="opcaoProduto" method="POST">
+        {% csrf_token %}
+        <div class="text-left" style="border: 15px solid #4e555b" ;>
+            <div style="margin-left:  1%">
+                <h3>Escolha o produto que deseja atualizar:</h3> <br>
+                <label for="input"><select class="form-control" name="opcaoProduto" form=opcaoProduto>
+                    {% for prod in produtos %}
+                        <option value={{ prod.codigo }}> {{ prod.codigo }} - {{ prod.nome }} </option>
+                    {% endfor %}
+                </select></label>
+                <input id="input" class="btn btn-primary" type="submit" value="Ok">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Produtos</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Dashboard</div>
-        <br>
-        <div class="list-group list-group-flush">
-            <a href="/cadastrar" class="list-group-item list-group-item-action bg-light">Cadastrar Produto</a>
-            <a href="/listar" class="list-group-item list-group-item-action bg-light">Listar Produto</a>
-            <a href="/select_prod" class="list-group-item list-group-item-action bg-light">Atualizar Produto</a>
-            <a href="/deletar" class="list-group-item list-group-item-action bg-light">Deletar Produto</a></div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-
-        <div class="container-fluid">
-            <form class="form-group" action="" id="opcaoProduto" method="POST">
-                {% csrf_token %}
-                <div class="text-left" style="border: 15px solid #4e555b" ;>
-                    <div style="margin-left:  1%">
-                        <h3>Escolha o produto que deseja atualizar:</h3> <br>
-                            <label for="input"><select class="form-control" name="opcaoProduto" form=opcaoProduto>
-                                {% for prod in produtos %}
-                                    <option value={{ prod.codigo }}> {{ prod.codigo }} - {{ prod.nome }} </option>
-                                {% endfor %}
-                            </select></label>
-                        <input id="input" class="btn btn-primary" type="submit" value="Ok">
-
-                    </div>
-                </div>
-                <br>
-            </form>
+            </div>
         </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Bootstrap core JavaScript -->
-<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
-</body>
-
-</html>
+        <br>
+    </form>
+{% endblock %}

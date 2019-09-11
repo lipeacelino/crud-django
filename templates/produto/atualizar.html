@@ -1,100 +1,35 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Produtos</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Dashboard</div>
-        <br>
-        <div class="list-group list-group-flush">
-            <a href="/cadastrar" class="list-group-item list-group-item-action bg-light">Cadastrar Produto</a>
-            <a href="/listar" class="list-group-item list-group-item-action bg-light">Listar Produto</a>
-            <a href="/select_prod" class="list-group-item list-group-item-action bg-light">Atualizar Produto</a>
-            <a href="/deletar" class="list-group-item list-group-item-action bg-light">Deletar Produto</a></div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-
-        <div class="container-fluid">
-            <form action="#" method="POST" style="margin-top: 2%;
+{% extends 'produto/base.html' %}
+{% block content %}
+<form action="#" method="POST" style="margin-top: 2%;
              margin-left: 20%; alignment: center; width: 50%">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="codigo">Código</label>
-                    <input class="form-control" type="text" id="codigo" name="codigo" value="{{ produto.codigo }}" minlength="3"
-                           pattern="[0-9]+$" required>
-                </div>
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input class="form-control" type="text" id="nome" name="nome" value="{{ produto.nome }}" minlength="3" required>
-                </div>
-                <div class="form-group">
-                    <label for="text">Categoria</label>
-                    <input class="form-control" type="text" id="categoria" name="categoria" value="{{ produto.categoria }}" minlength="3"
-                           required>
-                </div>
-                <div class="form-group">
-                    <label for="quantidade">Quantidade</label>
-                    <input class="form-control" type="number" id="quantidade" name="quantidade" value="{{ produto.quantidade }}" min="1"
-                           required>
-                </div>
-                <div class="form-group">
-                    <label for="text">Preço (R$)</label>
-                    <input class="form-control" type="number" id="preco" name="preco" value="{{ produto.preco }}" min="0.00" max="9999.99"
-                           step="0.01" patter="[0-9]+," required><br>
-                </div>
-                <button type="submit" class="btn btn-primary">Atualizar</button>
-            </form>
-        </div>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="codigo">Código</label>
+        <input class="form-control" type="text" id="codigo" name="codigo" value="{{ produto.codigo }}" minlength="3"
+               pattern="[0-9]+$" required>
     </div>
-    <!-- /#page-content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Bootstrap core JavaScript -->
-<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
-</body>
-
-</html>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" id="nome" name="nome" value="{{ produto.nome }}" minlength="3" required>
+    </div>
+    <div class="form-group">
+        <label for="text">Categoria</label>
+        <input class="form-control" type="text" id="categoria" name="categoria" value="{{ produto.categoria }}"
+               minlength="3"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="quantidade">Quantidade</label>
+        <input class="form-control" type="number" id="quantidade" name="quantidade" value="{{ produto.quantidade }}"
+               min="1"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="text">Preço (R$)</label>
+        <input class="form-control" type="number" id="preco" name="preco" value="{{ produto.preco }}" min="0.00"
+               max="9999.99"
+               step="0.01" patter="[0-9]+," required><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+{%endblock%}
